@@ -27,7 +27,7 @@ from models.ReplayBuffer import *
 
 class Agent:
   def __init__(self, env_name, gamma=0.99, epsilon=1, epsilon_min=0.01, epsilon_decrement=0.001, learning_rate=0.0001, batch_size=128,
-               n_episodes = 700, n_steps = 5000, buffer_size = 100000, hid1_dim=200, hid2_dim=128, path=None, tb_path=None, device = 'cpu', printLog = False, saveFreq = 2 ):
+               n_episodes = 700, n_steps = 5000, buffer_size = 100000, hid1_dim=200, hid2_dim=128, path=None, tb_path=None, device = 'cpu', printLog = False, saveFreq = 2 , displayEnv=False):
     """
     The Agent Clsss.
     ---
@@ -69,6 +69,7 @@ class Agent:
     self.tb_path = tb_path
     self.printLog = printLog
     self.saveFreq = saveFreq
+    self.displayEnv = displayEnv
     # inialise tensorboard writer
     self.sw = SummaryWriter(self.tb_path)
     # initialise the buffer
@@ -189,7 +190,7 @@ class Agent:
       save_path = self.path + "/#" + str(i)
       self.env.reset() #gym.make(self.env_name)
       env = self.env
-      if (i % self.saveFreq) == 0:
+      if (i % self.saveFreq) == 0 and self.displayEnv:
         env = Monitor(env, save_path, force=True, video_callable=lambda episode: True)
       self.episode(env)
       if self.printLog and len(self.rewards) >= 50:

@@ -56,9 +56,9 @@ if __name__=="__main__":
 
     args = parser.parse_args()
 
-# prepare the visualisation window
-display = Display(visible=0, size=(1400, 900))
-display.start()
+# # prepare the visualisation window
+# display = Display(visible=0, size=(1400, 900))
+# display.start()
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -67,7 +67,7 @@ helper.fix_seed(args.seed)
 agent1 = Agent(
     env_name=args.env_name, gamma=args.gamma, epsilon=args.epsilon, epsilon_min=args.epsilon_min, epsilon_decrement=args.epsilon_decrement, learning_rate=args.learning_rate, 
     batch_size=args.batch_size, n_episodes = args.n_episodes, n_steps = args.n_steps, buffer_size = args.buffer_size, hid1_dim=args.hid1_dim, hid2_dim=args.hid2_dim, 
-    path=args.path, tb_path=args.tb_path, device = device, printLog = args.printLog)
+    path=args.path, tb_path=args.tb_path, device = device, printLog = args.printLog, displayEnv=args.displayEnv)
 
 agent1.train()
 

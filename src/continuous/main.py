@@ -52,6 +52,7 @@ if __name__=="__main__":
     parser.add_argument("--hid2-dim", default= 128, type= int)
     parser.add_argument("--path", default= "", type= str)
     parser.add_argument("--tb-path", default= "", type= str)
+    parser.add_argument("--displayEnv", default= False, type= bool)
 
 
 
@@ -70,7 +71,7 @@ env = gym.make('LunarLanderContinuous-v2')
 agent1 = Agent(
     env=env, gamma=args.gamma, epsilon=args.epsilon, epsilon_min=args.epsilon_min, epsilon_decrement=args.epsilon_decrement, learning_rate=args.learning_rate, 
     batch_size=args.batch_size, n_episodes = args.n_episodes, n_steps = args.n_steps, buffer_size = args.buffer_size, hid1_dim=args.hid1_dim, hid2_dim=args.hid2_dim, 
-    path=args.path, tb_path=args.tb_path)
+    path=args.path, tb_path=args.tb_path, displayEnv=args.displayEnv)
 
 agent1.train()
 

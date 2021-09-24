@@ -27,7 +27,7 @@ from models.ReplayBuffer import *
 
 class Agent:
   def __init__(self, env, gamma=0.99, epsilon=1, epsilon_min=0.01, epsilon_decrement=0.001, learning_rate=0.001, 
-               batch_size=64,n_episodes = 500, n_steps = 5000, buffer_size = 100000, hid1_dim=128, hid2_dim=128, path="", tb_path=""):
+               batch_size=64,n_episodes = 500, n_steps = 5000, buffer_size = 100000, hid1_dim=128, hid2_dim=128, path="", tb_path="", displayEnv=False):
     self.device = "cuda" if torch.cuda.is_available() else "cpu"
     self.env = env
     self.gamma = gamma
@@ -59,6 +59,7 @@ class Agent:
 
     self.path = path
     self.tb_path = tb_path
+    self.displayEnv = displayEnv
     self.sw = SummaryWriter(self.tb_path)
 
   def epsilon_greedy_action(self, state):
@@ -136,7 +137,7 @@ class Agent:
 
     for i in range(self.n_episodes): 
       savePath = self.path + "/#"+str(i)
-      # if (i + 1) % 50 == 0 or i==0 or (i+1)==self.n_episodes: self.env = Monitor(self.env, savePath, force=True, video_callable=lambda episode: True)
+      if ( (i + 1) % 50 == 0 or i==0 or (i+1)==self.n_episodes ) and self.displayEnv: self.env = Monitor(self.env, savePath, force=True, video_callable=lambda episode: True)
       self.episode()
       if ( (i + 1) % 50 == 0 or i==0 or (i+1)==self.n_episodes ) and len(self.rewards) >= 50:
         avg_reward = np.mean(self.rewards[-50:])
