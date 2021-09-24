@@ -29,6 +29,7 @@ urllib.request.urlretrieve('http://www.atarimania.com/roms/Roms.rar','Roms.rar')
 !mv ROMS.zip  rars
 !python -m atari_py.import_roms rars
 ```
+Or use the following in command line
 ```
 pip install -r src/requirements.txt
 ```
