@@ -84,11 +84,11 @@ python main.py --n-episodes  3 --learning-rate 1e-3  --epsilon-decrement 1e-2 --
 ```
 ### Part of the results
 #### LunarLander-v2
-![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/main/images/plot1.png)
-![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/main/images/plot2.png)
-![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/main/images/plot3.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/master/images/plot1.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/master/images/plot2.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/master/images/plot3.png)
 
 #### LunarLanderContinuous-v2
-![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/main/images/plot4.png)
-![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/main/images/plot5.png)
-![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/main/images/plot6.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/master/images/plot4.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/master/images/plot5.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/blob/master/images/plot6.png)
