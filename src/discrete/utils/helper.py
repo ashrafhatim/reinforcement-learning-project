@@ -21,7 +21,6 @@ from pprint import pprint
 
 import matplotlib
 import matplotlib.pyplot as plt
-%matplotlib inline
 import io
 from IPython.display import HTML
 
@@ -77,7 +76,7 @@ def fix_seed(seed):
   INPUTS
     seed: (int) the random seed.
   """
-  random.seed(seed=seed)
-  np.random.seed(seed=seed)
-  torch.manual_seed(seed=seed)
-  torch.cuda.manual_seed_all(seed=seed)
+  random.seed(seed)
+  np.random.seed(seed)
+  torch.manual_seed(seed)
+  torch.cuda.manual_seed_all(seed)

@@ -21,7 +21,6 @@ from pprint import pprint
 
 import matplotlib
 import matplotlib.pyplot as plt
-%matplotlib inline
 import io
 from IPython.display import HTML
 
@@ -29,14 +28,14 @@ from torch.utils.tensorboard import SummaryWriter
 
 from pyvirtualdisplay import Display
 
-from models import Agent as Agent
-from models import DQN as DQN
-from models import ReplayBuffer as ReplayBuffer
+from models.Agent import *
+from models.DQN import *
+from models.ReplayBuffer import *
 
 
 class Agent:
   def __init__(self, env_name, gamma=0.99, epsilon=1, epsilon_min=0.01, epsilon_decrement=0.001, learning_rate=0.0001, batch_size=128,
-               n_episodes = 700, n_steps = 5000, buffer_size = 100000, hid1_dim=200, hid2_dim=128, path=None, tb_path=None, device = 'cpu', printLog = False ):
+               n_episodes = 700, n_steps = 5000, buffer_size = 100000, hid1_dim=200, hid2_dim=128, path=None, tb_path=None, device = 'cpu', printLog = False, saveFreq = 2 ):
     """
     The Agent Clsss.
     ---
@@ -77,6 +76,7 @@ class Agent:
     self.path = path
     self.tb_path = tb_path
     self.printLog = printLog
+    self.saveFreq = saveFreq
     # inialise tensorboard writer
     self.sw = SummaryWriter(self.tb_path)
     # initialise the buffer
@@ -197,10 +197,10 @@ class Agent:
       save_path = self.path + "/#" + str(i)
       self.env.reset() #gym.make(self.env_name)
       env = self.env
-      if (i % 100) == 0:
+      if (i % self.saveFreq) == 0:
         env = Monitor(env, save_path, force=True, video_callable=lambda episode: True)
       self.episode(env)
-      if ((i + 1) % 100 == 0) and self.printLog:
+      if self.printLog and len(self.rewards) >= 50:
         avg_reward = np.mean(self.rewards[-50:])
         print('EPISODE ', i+1 , 'reward %.2f' % self.periodic_reward, 'average reward %0.2f'% avg_reward, 'epssilon %0.2f' % self.epsilon)
         self.env.close()
