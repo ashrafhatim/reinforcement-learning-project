@@ -82,4 +82,13 @@ python main.py --n-episodes 3 --env-name "LunarLander-v2" --path "../" --tb-path
 ```
 python main.py --n-episodes  3 --learning-rate 1e-3  --epsilon-decrement 1e-2 --batch-size 512 --path "../../" --tb-path "../../"
 ```
+### Part of the results
+#### LunarLander-v2
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/images/plot1.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/images/plot2.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/images/plot3.png)
 
+#### LunarLanderContinuous-v2
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/images/plot4.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/images/plot5.png)
+![alt text](https://github.com/ashrafhatim/reinforcement-learning-project-/images/plot6.png)
