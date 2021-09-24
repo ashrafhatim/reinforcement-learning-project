@@ -4,24 +4,16 @@ from gym.wrappers import Monitor
 gymlogger.set_level(40) #error only
 
 import torch
-import torch.nn as nn
 import torch.nn.functional as F 
 from torch import optim
 import numpy as np
-import pandas as pd
 
-import seaborn as sns
 from pyvirtualdisplay import Display
 from IPython import display as ipythondisplay
 from IPython.display import clear_output
-from pathlib import Path
 
-import random, os.path, math, glob, csv, base64, itertools, sys
 from pprint import pprint
 
-import matplotlib
-import matplotlib.pyplot as plt
-import io
 from IPython.display import HTML
 
 from torch.utils.tensorboard import SummaryWriter

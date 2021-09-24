@@ -1,18 +1,10 @@
 import torch.nn as nn
 
-
 class DQN(nn.Module):
   def __init__(self, input_dim, hid1_dim, hid2_dim, n_actions):
+
     super(DQN, self).__init__()
-    """
-    The DQN network Class.
-    ---
-    INPUTS:
-      input_dim: (int) the state dimensionss.
-      hid1_dim: (int) the first hidden dimension.
-      hid2_dim: (int) the second hidden dimension.
-      n_actions: (int) the action dimensions.
-    """
+  
     self.input_dim = input_dim
     self.hid1_dim = hid1_dim
     self.hid2_dim = hid2_dim
@@ -21,9 +13,13 @@ class DQN(nn.Module):
             nn.Linear(self.input_dim, self.hid1_dim),
             nn.ReLU(),
             nn.Linear(self.hid1_dim, self.hid2_dim),
-            nn.ReLU(),
-            nn.Linear(self.hid2_dim, self.n_actions)
+            nn.ReLU()
         )
+    # instead of outputting one value we output the q values for the two actions
+    self.last1 = nn.Linear(self.hid2_dim, self.n_actions)
+    self.last2 = nn.Linear(self.hid2_dim, self.n_actions)
 
   def forward(self, state):
-    return self.net(state.float())
+    x = self.net(state)
+    # returns the two different sets of q values
+    return self.last1(x), self.last2(x)

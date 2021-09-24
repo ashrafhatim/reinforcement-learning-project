@@ -34,8 +34,10 @@ import argparse
 if __name__=="__main__":
 
     parser = argparse.ArgumentParser()
+
+    # env, gamma=0.99, epsilon=1, epsilon_min=0.01, epsilon_decrement=0.001, learning_rate=0.001, 
+    #            batch_size=64,n_episodes = 500, n_steps = 5000, buffer_size = 100000, hid1_dim=128, hid2_dim=128, path="", tb_path=""
       
-    parser.add_argument("--env-name", default= "LunarLander-v2", type= str)
     parser.add_argument("--seed", default= 0, type= int)
     parser.add_argument("--gamma", default= 0.99, type= float)
     parser.add_argument("--epsilon", default= 1, type= float)
@@ -50,24 +52,25 @@ if __name__=="__main__":
     parser.add_argument("--hid2-dim", default= 128, type= int)
     parser.add_argument("--path", default= "", type= str)
     parser.add_argument("--tb-path", default= "", type= str)
-    parser.add_argument("--printLog", default= False, type= bool)
-    parser.add_argument("--displayEnv", default= False, type= bool)
+
 
 
     args = parser.parse_args()
 
-# prepare the visualisation window
-display = Display(visible=0, size=(1400, 900))
-display.start()
+# # prepare the visualisation window
+# display = Display(visible=0, size=(1400, 900))
+# display.start()
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 helper.fix_seed(args.seed)
 
+env = gym.make('LunarLanderContinuous-v2')
+
 agent1 = Agent(
-    env_name=args.env_name, gamma=args.gamma, epsilon=args.epsilon, epsilon_min=args.epsilon_min, epsilon_decrement=args.epsilon_decrement, learning_rate=args.learning_rate, 
+    env=env, gamma=args.gamma, epsilon=args.epsilon, epsilon_min=args.epsilon_min, epsilon_decrement=args.epsilon_decrement, learning_rate=args.learning_rate, 
     batch_size=args.batch_size, n_episodes = args.n_episodes, n_steps = args.n_steps, buffer_size = args.buffer_size, hid1_dim=args.hid1_dim, hid2_dim=args.hid2_dim, 
-    path=args.path, tb_path=args.tb_path, device = device, printLog = args.printLog)
+    path=args.path, tb_path=args.tb_path)
 
 agent1.train()
 
