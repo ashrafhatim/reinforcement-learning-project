@@ -36,28 +36,27 @@ pip install -r src/requirements.txt
 ### The discerete case
 
 #### Parameters
-```
-parser.add_argument("--env-name", default= "LunarLander-v2", type= str)
-    parser.add_argument("--seed", default= 0, type= int)
-    parser.add_argument("--gamma", default= 0.99, type= float)
-    parser.add_argument("--epsilon", default= 1, type= float)
-    parser.add_argument("--epsilon-min", default= 0.01, type= float)
-    parser.add_argument("--epsilon-decrement", default= 0.001, type= float)
-    parser.add_argument("--learning-rate", default= 0.0001, type= float)
-    parser.add_argument("--batch-size", default= 128, type= int)
-    parser.add_argument("--n-episodes", default= 100, type= int)
-    parser.add_argument("--n-steps", default= 5000, type= int)
-    parser.add_argument("--buffer-size", default= 1000000, type= int)
-    parser.add_argument("--hid1-dim", default= 200, type= int)
-    parser.add_argument("--hid2-dim", default= 128, type= int)
-    parser.add_argument("--path", default= "", type= str)
-    parser.add_argument("--tb-path", default= "", type= str)
-    parser.add_argument("--printLog", default= False, type= bool)
-    parser.add_argument("--displayEnv", default= False, type= bool)
-```
+| option              | description                                                                 | type  | default |
+|---------------------|-----------------------------------------------------------------------------|-------|---------|
+| --seed              | random seed to be used                                                      | int   | 0       |
+| --gamma             | gamma parameter for the algorithm                                           | float | 0.99    |
+| --epsilon           | epsilon value for the epsilon greedy actions                                | float | 1       |
+| --epsilon-decrement | value by which epsilon is decreased after every episode (linear decay)      | float | 0.001   |
+| --epsilon-min       | minimum value for epsilon                                                   | float | 0.1     |
+| --learning-rate     | learning rate for the DQN's optimizer                                       | float | 0.0001  |
+| --batch-size        | size of batches to be sampled from the replay buffer during each step       | int   | 128     |
+| --n-episodes        | number of episodes                                                          | int   | 100     |
+| --n-steps           | maximum number of steps for an episode                                      | int   | 5000    |
+| --buffer-size       | size of the buffer to store transitions                                     | int   | 1000000 |
+| --hid1-dim          | dimension of the first hidden layer                                         | int   | 128     |
+| --hid2-dim          | dimension of the second hidden layer                                        | int   | 128     |
+| --tb-path           | path of the folder in which the experiment data is saved (tensorboard)      | str   | ""      |
+| --path              | path of the folder in which videos of the agent's performance will be saved | str   | ""      |
+| --display-env       | whether to display the agent's performance as it learns (done as video)     | bool  | False   |
+| --print-log         | whether to print the logs or not                                            | bool  | False   |
 #### Example
 ```
-python main.py --n-episodes 3 --env-name "LunarLander-v2" --path "../" --tb-path "../" --printLog True
+python src/discrete/main.py --n-episodes 3 --env-name "LunarLander-v2" --path "../" --tb-path "../" --printLog True
 ```
 ### The continuous case
 #### Parameters
@@ -80,7 +79,7 @@ python main.py --n-episodes 3 --env-name "LunarLander-v2" --path "../" --tb-path
 | --display-env       | whether to display the agent's performance as it learns (done as video)     | bool  | False   |
 #### Example
 ```
-python src/discrete/main.py --n-episodes  3 --learning-rate 1e-3  --epsilon-decrement 1e-2 --batch-size 512 --path "../../" --tb-path "../../"
+python src/continuous/main.py --n-episodes  3 --learning-rate 1e-3  --epsilon-decrement 1e-2 --batch-size 512 --path "../../" --tb-path "../../"
 ```
 ### Part of the results
 #### LunarLander-v2
