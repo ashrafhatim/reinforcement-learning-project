@@ -52,8 +52,8 @@ pip install -r src/requirements.txt
 | --hid2-dim          | dimension of the second hidden layer                                        | int   | 128     |
 | --tb-path           | path of the folder in which the experiment data is saved (tensorboard)      | str   | ""      |
 | --path              | path of the folder in which videos of the agent's performance will be saved | str   | ""      |
-| --display-env       | whether to display the agent's performance as it learns (done as video)     | bool  | False   |
-| --print-log         | whether to print the logs or not                                            | bool  | False   |
+| --displayEnv       | whether to display the agent's performance as it learns (done as video)     | bool  | False   |
+| --printLog         | whether to print the logs or not                                            | bool  | False   |
 #### Example
 ```
 python src/discrete/main.py --n-episodes 3 --env-name "LunarLander-v2" --path "../" --tb-path "../" --printLog True
@@ -76,7 +76,7 @@ python src/discrete/main.py --n-episodes 3 --env-name "LunarLander-v2" --path ".
 | --hid2-dim          | dimension of the second hidden layer                                        | int   | 128     |
 | --tb-path           | path of the folder in which the experiment data is saved (tensorboard)      | str   | ""      |
 | --path              | path of the folder in which videos of the agent's performance will be saved | str   | ""      |
-| --display-env       | whether to display the agent's performance as it learns (done as video)     | bool  | False   |
+| --displayEnv       | whether to display the agent's performance as it learns (done as video)     | bool  | False   |
 #### Example
 ```
 python src/continuous/main.py --n-episodes  3 --learning-rate 1e-3  --epsilon-decrement 1e-2 --batch-size 512 --path "../../" --tb-path "../../"
