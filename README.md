@@ -39,7 +39,7 @@ pip install -r src/requirements.txt
 | option              | description                                                                 | type  | default |
 |---------------------|-----------------------------------------------------------------------------|-------|---------|
 | --seed              | random seed to be used                                                      | int   | 0       |
-| --gamma             | gamma parameter for the algorithm                                           | float | 0.99    |
+| --gamma             | gamma parameter for the algorithm (the discount factor)                                          | float | 0.99    |
 | --epsilon           | epsilon value for the epsilon greedy actions                                | float | 1       |
 | --epsilon-decrement | value by which epsilon is decreased after every episode (linear decay)      | float | 0.001   |
 | --epsilon-min       | minimum value for epsilon                                                   | float | 0.1     |
@@ -63,7 +63,7 @@ python src/discrete/main.py --n-episodes 3 --env-name "LunarLander-v2" --path ".
 | option              | description                                                                 | type  | default |
 |---------------------|-----------------------------------------------------------------------------|-------|---------|
 | --seed              | random seed to be used                                                      | int   | 0       |
-| --gamma             | gamma parameter for the algorithm                                           | float | 0.99    |
+| --gamma             | gamma parameter for the algorithm(the discount factor)                                             | float | 0.99    |
 | --epsilon           | epsilon value for the epsilon greedy actions                                | float | 1       |
 | --epsilon-decrement | value by which epsilon is decreased after every episode (linear decay)      | float | 0.001   |
 | --epsilon-min       | minimum value for epsilon                                                   | float | 0.1     |
