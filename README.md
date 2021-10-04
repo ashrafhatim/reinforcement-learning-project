@@ -1,4 +1,4 @@
-# reinforcement-learning-project-
+# reinforcement-learning-project
 The final project of the reinforcement learning course during ([AMMI](https://aimsammi.org/)) master 2021. To know more about the project please read the report.
 
 ### To download the requirements
